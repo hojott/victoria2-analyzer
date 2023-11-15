@@ -7,4 +7,4 @@ Warning for a slow parser and spaghetti code.
 ## Running
 
 Run with
-`python analyzer.py [path/to/.v2|.json]`
+`python analyzer [path/to/.v2|.json]`
