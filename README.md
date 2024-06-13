@@ -6,5 +6,8 @@ Warning for a slow parser and spaghetti code.
 
 ## Running
 
-Run with
+First compile the parser with
+`gcc -shared -o analyzer/parser/parser.so -fPIC -O2 analyzer/parser/parser.c`
+
+Then run with
 `python analyzer [path/to/.v2|.json]`

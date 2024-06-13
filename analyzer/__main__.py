@@ -1,24 +1,21 @@
 import sys
 import json
 
-import v2_parser
+from parser import parse_file
 import cmds
 
+
 def load_data(path: str) -> dict:
-    
     if ".v2" in path:
-        file = v2_parser.load_file(path)
-        return v2_parser.parse(file)
+        path = parse_file(path)
 
-    if ".json" in path:
-        with open(path, 'r') as f:
-            return json.load(f)
+    with open(path, "r") as f:
+        return json.load(f)
 
-    raise Exception("Wrong filetype :D")
 
 def help() -> None:
-    """ Print help data """
-    
+    """Print help data"""
+
     print("Victoria 2 Analyzer 0.2.0")
     print()
     print("Usage: python analyzer.py [path/to/save.v2|.json]")
@@ -28,6 +25,7 @@ def help() -> None:
     print("\twar <num> ->  Show losses for war indexed <num>")
     print("\tquit      ->  Quit analyzer")
     print()
+
 
 def main():
     try:
@@ -39,12 +37,11 @@ def main():
     if path[0] == "-":
         help()
         return
-    
+
     save_data = load_data(path)
 
     running = True
     while running:
-
         cmd = input("Input command (h for help): ").split(" ")
         if cmd[0] == "war":
             try:
@@ -59,8 +56,6 @@ def main():
             running = False
             break
 
+
 if __name__ == "__main__":
     main()
-
-
-
